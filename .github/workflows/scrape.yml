@@ -1,0 +1,38 @@
+name: Manual Spotify Review Scraper
+
+on:
+  workflow_dispatch: # This creates the "Run workflow" button on GitHub
+
+jobs:
+  scrape-and-upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Decode Service Account JSON
+        env:
+          GOOGLE_SERVICE_ACCOUNT_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_B64 }}
+        run: |
+          echo "$GOOGLE_SERVICE_ACCOUNT_B64" | base64 -d > service_account.json
+
+      - name: Run Pipeline
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: service_account.json
+        run: python main.py
+
+      - name: Cleanup Secrets
+        if: always()
+        run: rm -f service_account.json
