@@ -82,7 +82,7 @@ GitHub's servers will instantly spin up, run the Python code, scrape the reviews
 
 ## 📊 The Output
 
-The end result is a highly readable, PM-ready Google Sheet that looks like this:
+The end result is a highly readable, PM-ready Google Sheet. **[View the live, automated output data here!](https://docs.google.com/spreadsheets/d/1iqYFAtN7viDcOh7Egke0oolMcVvzGPf6vqb3LMuzy70/edit?usp=sharing)**
 
 | ID | Source | Segment | Discovery Signal | Repetition Signal | Text | Date |
 |----|--------|---------|-------------------|-------------------|------|------|
