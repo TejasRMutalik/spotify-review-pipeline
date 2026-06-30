@@ -21,7 +21,7 @@ As a PM, making data-driven decisions requires qualitative data. This pipeline a
 
 This pipeline runs entirely on Python and syncs directly to a Google Sheet. It follows a strict 5-step process:
 
-1. **Scrape**: Pulls the absolute newest 3,000 reviews from the Google Play Store, along with a custom 1st-party user survey.
+1. **Scrape**: Pulls the absolute newest 3,000 reviews from the Google Play Store, along with a custom 1st-party user survey ([View the raw survey data here](https://docs.google.com/spreadsheets/d/16SpkUfvN5lryRlOyQa0MInE6hCI3dMs-opcZqvHYoWM/edit?usp=sharing)).
 2. **Merge**: Combines the data sources into a single dataset.
 3. **Clean**: Removes non-English reviews (using AI language detection), drops useless one-word reviews, and formats the data.
 4. **Filter & Segment**: Scans every review against a custom PM keyword dictionary. It drops off-topic reviews and tags the relevant ones as:
